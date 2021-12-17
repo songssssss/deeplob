@@ -21,5 +21,7 @@ print(classification_report(ConY, ConX))
     accuracy                           0.77    139487
     macro avg       0.76      0.75      0.76    139487
     weighted avg       0.77      0.77      0.77    139487
-
-'''
+    
+    
+    
+https://blog.csdn.net/weixin_44863328/article/details/107303773
