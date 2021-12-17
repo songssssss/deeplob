@@ -19,7 +19,7 @@ print(classification_report(ConY, ConX))
          2.0       0.75      0.68      0.71     35084
 
     accuracy                           0.77    139487
-   macro avg       0.76      0.75      0.76    139487
-weighted avg       0.77      0.77      0.77    139487
+    macro avg       0.76      0.75      0.76    139487
+    weighted avg       0.77      0.77      0.77    139487
 
 '''
