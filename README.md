@@ -3,9 +3,11 @@
 
 print(confusion_matrix(ConY, ConX))
 '''
-[[27684  6886  3837]
- [ 5214 56485  4297]
- [ 4782  6429 23873]]
+
+[27684  6886  3837]
+[ 5214 56485  4297]
+[ 4782  6429 23873]
+
 '''
 
 print(classification_report(ConY, ConX))
