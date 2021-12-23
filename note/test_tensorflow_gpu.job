@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -J test_tensorflow_gpu
+#SBATCH -N 1 -c 1
+#SBATCH --time=0:59:59
+#SBATCH --gres=gpu:1
+#SBATCH -e test_tensorflow_gpu_error.log
+#SBATCH -o test_tensorflow_gpu_output.log
+
+source /project/Stat/local/anaconda3-2020.11.sh
+module load cuda/10.2
+conda activate tensorflow-gpu-cuda10
+cd $HOME/temp
+# python3 < test_python.py
+python3 < test_tensorflow_gpu.py
+conda deactivate
