@@ -61,7 +61,14 @@ def sampling_CIBL(data):
 def sampling_FREQ(data, freq):
     sub_data = data[np.arange(0,len(data),freq),:]
     return sub_data
-  
+ 
+############################################################
+# shuffle one price one volume
+def shuffle(data):
+    order=[(x,y) for x,y in zip(np.arange(0,np.shape(data)[1]//2),np.arange(np.shape(data)[1]//2,np.shape(data)[1]))]
+    ind=list(np.array(order).flat)
+    return data[:,ind]
+   
 #################################################
 # normalization https://ithelp.ithome.com.tw/articles/10240494
 
