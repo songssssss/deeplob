@@ -43,6 +43,25 @@ def merge_data(data_path):
 train_data=merge_data(train_path)
 test_data=merge_data(test_path)
 
+###########################################################
+#https://www.cxyzjd.com/article/qq_40816078/109476771 # install tensorflow
+# sampling change in best level
+def sampling_CIBL(data):
+    # price: bid0: 0 ask0: 10
+    # if na then fill the bid/ask price with the other one
+    bid=np.where(data[:,0]==0,data[:,10],data[:,0])
+    ask=np.where(data[:,10]==0,data[:,0],data[:,10])
+    # retrieve the index of rows with changed prices
+    ind = np.where((bid[:-1]-bid[1:] == 0) and (ask[:-1]-ask[1:] == 0), False, True)
+    sub_data = data[np.insert(ind,0,True),:] 
+    return sub_data
+
+############################################################
+# sampling frequency
+def sampling_FREQ(data, freq):
+    sub_data = data[np.arange(0,len(data),freq),:]
+    return sub_data
+  
 #################################################
 # normalization https://ithelp.ithome.com.tw/articles/10240494
 
