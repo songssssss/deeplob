@@ -44,7 +44,6 @@ train_data=merge_data(train_path)
 test_data=merge_data(test_path)
 
 ###########################################################
-#https://www.cxyzjd.com/article/qq_40816078/109476771 # install tensorflow
 # sampling change in best level
 def sampling_CIBL(data):
     # price: bid0: 0 ask0: 10
