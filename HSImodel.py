@@ -51,7 +51,7 @@ def sampling_CIBL(data):
     bid=np.where(data[:,0]==0,data[:,10],data[:,0])
     ask=np.where(data[:,10]==0,data[:,0],data[:,10])
     # retrieve the index of rows with changed prices
-    ind = np.where((bid[:-1]-bid[1:] == 0) and (ask[:-1]-ask[1:] == 0), False, True)
+    ind = np.where((bid[:-1]-bid[1:] == 0) & (ask[:-1]-ask[1:] == 0), False, True)
     sub_data = data[np.insert(ind,0,True),:] 
     return sub_data
 
