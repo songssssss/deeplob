@@ -25,3 +25,21 @@ print(classification_report(ConY, ConX))
     
     
 https://blog.csdn.net/weixin_44863328/article/details/107303773
+
+# How can I interrupt training when the validation loss isn't decreasing anymore?
+
+You can use an EarlyStopping callback:
+
+```
+from tensorflow.keras.callbacks import EarlyStopping
+
+early_stopping = EarlyStopping(monitor='val_loss', patience=2)
+model.fit(x, y, validation_split=0.2, callbacks=[early_stopping])
+```
+https://keras.io/getting_started/faq/#how-can-i-interrupt-training-when-the-validation-loss-isnt-decreasing-anymore
+
+# Accuracy Decreasing with higher epochs
+
+https://stackoverflow.com/questions/53242875/accuracy-decreasing-with-higher-epochs
+
+
