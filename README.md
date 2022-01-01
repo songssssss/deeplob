@@ -26,9 +26,9 @@ print(classification_report(ConY, ConX))
     
 https://blog.csdn.net/weixin_44863328/article/details/107303773
 
-# How can I interrupt training when the validation loss isn't decreasing anymore?
+# interrupt training when the validation loss isn't decreasing anymore?
 
-You can use an EarlyStopping callback:
+use an EarlyStopping callback:
 
 ```
 from tensorflow.keras.callbacks import EarlyStopping
