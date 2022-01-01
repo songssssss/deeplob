@@ -43,3 +43,15 @@ https://keras.io/getting_started/faq/#how-can-i-interrupt-training-when-the-vali
 https://stackoverflow.com/questions/53242875/accuracy-decreasing-with-higher-epochs
 
 
+T
+
+batch size
+
+frequency
+
+alpha
+
+learning rate
+
+
+
