@@ -14,3 +14,6 @@ dimension
 # 1.0 has type <class 'numpy.float64'>, but expected one of: (<class 'int'>,)
 
 https://blog.csdn.net/weixin_34910922/article/details/117451560
+
+
+https://towardsdatascience.com/using-tfrecords-to-train-a-cnn-on-mnist-aec141d65e3d
