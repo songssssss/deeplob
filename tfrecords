@@ -1,0 +1,12 @@
+# numpy to tfrecords possible ways
+https://blog.csdn.net/songbinxu/article/details/80136836
+
+reshape the X_CNN, Y_CNN
+
+
+
+encountered problems
+
+# 1.0 has type <class 'numpy.float64'>, but expected one of: (<class 'int'>,)
+
+https://blog.csdn.net/weixin_34910922/article/details/117451560
