@@ -22,3 +22,8 @@ https://towardsdatascience.com/using-tfrecords-to-train-a-cnn-on-mnist-aec141d65
 
 tf.data.Dataset
 https://www.tensorflow.org/guide/data_performance
+
+
+
+tf.data.Dataset.from_tensor_slices()
+get the slices of an array in the form of objects
