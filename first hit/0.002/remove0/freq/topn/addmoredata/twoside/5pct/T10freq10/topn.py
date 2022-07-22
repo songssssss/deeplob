@@ -98,19 +98,30 @@ def create_label(data, alpha):
         lessThan50PercentCount = unLabeledPrices.bisect_right((midprice[i]/(1+alpha), -1))
         moreThan50PercentCount = len(unLabeledPrices) - unLabeledPrices.bisect_left((midprice[i] /(1-alpha),-1))
 
-        while lessThan50PercentCount >= 3:
+        while lessThan50PercentCount > 3:
+            tmp=unLabeledPrices.pop(0)[-1]
+            labels[tmp] = 0
+            # faster, time value larger
+            time[tmp] = i-tmp
+            lessThan50PercentCount -= 1
+        while lessThan50PercentCount > 0:
             tmp=unLabeledPrices.pop(0)[-1]
             labels[tmp] = 1
             # faster, time value larger
             time[tmp] = i-tmp
             lessThan50PercentCount -= 1
-        while moreThan50PercentCount >= 3:
+        while moreThan50PercentCount > 3:
+            tmp=unLabeledPrices.pop(-1)[-1]
+            labels[tmp] = 0
+            time[tmp] = i-tmp
+            #labels[unLabeledPrices.pop(-1)[-1]] = -1
+            moreThan50PercentCount -= 1
+        while moreThan50PercentCount > 0:
             tmp=unLabeledPrices.pop(-1)[-1]
             labels[tmp] = -1
             time[tmp] = i-tmp
             #labels[unLabeledPrices.pop(-1)[-1]] = -1
-            moreThan50PercentCount -= 1
-              
+            moreThan50PercentCount -= 1      
         unLabeledPrices.add((midprice[i], i))      
     
     return np.array(labels), np.array(time)
