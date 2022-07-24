@@ -552,12 +552,17 @@ for i in range(55,105,5):
     #print(ConX)
     #print(ConY)
     
-    d1=ConX[:-3]-ConX[1:-2]==0
-    print('next one is different: ',sum(d1))
-    d2=ConX[1:-2]-ConX[2:-1]==0
-    print('next one is different: ',sum(d1&d2))
-    d1=ConX[2:-1]-ConX[3:]==0
-    print('next one is different: ',sum(d1))
+    d1=ConX[:-3]-ConX[1:-2]!=0
+    dd1=sum(d1)
+    print('next one is different: ',dd1)
+    d2=ConX[1:-2]-ConX[2:-1]!=0
+    dd2=sum(~d1&d2)
+    print('next two is different: ',dd2)
+    d3=ConX[2:-1]-ConX[3:]!=0
+    dd3=sum(~d1&~d2&d3)
+    print('next three is different: ',dd3)
+    
+    print(dd1+dd2+dd3)
     
     #np.savetxt('ConX.csv', ConX, delimiter=',')
     #np.savetxt('ConY.csv', ConY, delimiter=',')
@@ -604,6 +609,18 @@ for i in range(55,105,5):
     ConY = trans(trainY_CNN[ci_ind,:])
     #print(ConX)
     #print(ConY)
+    
+    d1=ConX[:-3]-ConX[1:-2]!=0
+    dd1=sum(d1)
+    print('next one is different: ',dd1)
+    d2=ConX[1:-2]-ConX[2:-1]!=0
+    dd2=sum(~d1&d2)
+    print('next two is different: ',dd2)
+    d3=ConX[2:-1]-ConX[3:]!=0
+    dd3=sum(~d1&~d2&d3)
+    print('next three is different: ',dd3)
+    
+    print(dd1+dd2+dd3)
     
     print('i is ', i, ' the cutoff is', cutoff)  
     #print('non-overlapping cases in the interval:', len(set(ci_ind)&set(pred_non_ind)))
