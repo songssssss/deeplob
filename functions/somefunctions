@@ -1,0 +1,51 @@
+############################################################
+# sampling frequency
+def sampling_FREQ(data, freq):
+    sub_data = data[np.arange(0,len(data),freq),:]
+    return sub_data
+
+Freq=8
+
+train_data=sampling_FREQ(train_data, Freq)
+test_data=sampling_FREQ(test_data, Freq)
+pred_data=sampling_FREQ(pred_data, Freq)
+
+############################################################
+# first order derivative
+def derivative(data, freq):
+    data_removed=data[1:,:]
+    for i in range(data.shape[1]):
+        data_removed=np.hstack((data_removed, 1/freq*np.diff(data[:,i]).reshape(len(data[1:,:]),1)))
+    return data_removed
+
+train_data=derivative(train_data, Freq)
+test_data=derivative(test_data, Freq)
+pred_data=derivative(pred_data, Freq)
+'''
+############################################################
+# shuffle one price one volume
+def shuffle(data):
+    order=[(x,y) for x,y in zip(np.arange(0,np.shape(data)[1]//2),np.arange(np.shape(data)[1]//2,np.shape(data)[1]))]
+    ind=list(np.array(order).flat)
+    return data[:,ind]
+
+
+# after T ticks
+########################################################
+# create label
+def create_label(data, T, alpha):
+    # price: bid0: 0 ask0: 10
+    data[:,0]=np.where(data[:,0]==0,data[:,10],data[:,0])
+    data[:,10]=np.where(data[:,10]==0,data[:,0],data[:,10])
+    midprice=(data[:,0]+data[:,10])/2
+    #midprice=pd.Series(midprice)
+    # calculate the mid prices change
+    m_p=np.array([], dtype=np.float32)
+    for i in range(len(midprice)-T):
+        m_p = np.append(m_p,(np.mean(midprice[i+1:i+T+1])-midprice[i])/midprice[i])
+    # assign the labels
+    m_p[(m_p<=-alpha)]=-1
+    m_p[(m_p>-alpha) & (m_p<alpha)]=0
+    m_p[(m_p>=alpha)]=1
+    
+    return m_p
