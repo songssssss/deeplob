@@ -21,7 +21,24 @@ def derivative(data, freq):
 train_data=derivative(train_data, Freq)
 test_data=derivative(test_data, Freq)
 pred_data=derivative(pred_data, Freq)
-'''
+
+
+############################################################
+# product price and volume
+def product(data):
+    product=np.array([np.array(data[:,x])*np.array(data[:,y]) for x,y in zip(np.arange(0,np.shape(data)[1]//2),np.arange(np.shape(data)[1]//2,np.shape(data)[1]))]).T
+    data_combined = np.hstack((data, product))
+    return data_combined
+
+train_data=product(train_data)
+test_data=product(test_data)
+pred_data=product(pred_data)
+
+print('after add product features: \n')
+print('train_data shape: ', train_data.shape)
+print('test_data shape: ', test_data.shape)
+print('pred_data shape: ', pred_data.shape)
+
 ############################################################
 # shuffle one price one volume
 def shuffle(data):
